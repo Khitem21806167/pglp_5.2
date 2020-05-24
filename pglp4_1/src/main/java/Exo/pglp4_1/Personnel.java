@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.sql.Array;
+import java.sql.Date;
 import java.time.LocalDate;
-
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +120,19 @@ public class Personnel extends TypePersonnel implements Serializable {
 		this.dateNais=b.dateNais;
 		this.fonctions=b.fonctions;
 		this.numtel=b.numtel;
+	}
+
+	public Personnel(String nom2, String string, Date date, Array array, Array array2) {
+		
+		// TODO Auto-generated constructor stub
+		this.nom=nom2;
+		this.prenom= string;
+		this.dateNais=date.toInstant()
+			      .atZone(ZoneId.systemDefault())
+			      .toLocalDate();
+		this.fonctions=(List<String>) array;
+		this.numtel=(Vector<TypeTelephone>) array2;
+		
 	}
 
 	//affichage les informations:

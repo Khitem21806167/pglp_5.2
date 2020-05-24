@@ -5,13 +5,36 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GroupePersonnel extends TypePersonnel implements Serializable{
-	
+	private String id;
 	private List<TypePersonnel> ListedePersonnel= new ArrayList<TypePersonnel>();
+	public GroupePersonnel(String id,Array array)
+	{
+		this.id=id;
+		this.ListedePersonnel=(List<TypePersonnel>) array;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	
+	
+	public List<TypePersonnel> getListedePersonnel() {
+		return ListedePersonnel;
+	}
+
+	public void setListedePersonnel(List<TypePersonnel> listedePersonnel) {
+		ListedePersonnel = listedePersonnel;
+	}
+
 	@Override
 	public boolean pers() {
 		return true;
